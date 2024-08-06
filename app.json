@@ -2,6 +2,7 @@
   "expo": {
     "name": "Cafe House",
     "slug": "Cafe-House-Application",
+    "description":"This my practice project for react native that consists of an application for a cafe's customers. The application contains all the necessary features for its respective purpose.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/ios-icon.png",
