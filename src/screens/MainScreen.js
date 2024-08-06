@@ -8,14 +8,16 @@ import { memo } from 'react';
 import { collection, getDocs} from "firebase/firestore";
 import { db } from './Firebase';
 import Products from '../components/Products';
+import Search from '../components/Search';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useProductStore} from '../Store/Store';
 
 export default function MainScreen({navigation}){
-    const [locationtext,setlocationtext]=useState("Allama iqbal town");
     const [SearchText,setSearchText]=useState("");
     const [SelectedCategory, setSelectedCategory]= useState("Coffee");
     const [Menu, setMenu] = useState([]);
     const [isDataLoading, setisDataLoading] = useState(true)
-
+    const location = useProductStore((state) => state.Location);
     const getCategoryStyle = (category) => {
         const isSelected = category === SelectedCategory;
         return {
@@ -34,7 +36,6 @@ export default function MainScreen({navigation}){
         setSelectedCategory(Category);
         try{
         const data = await fetchData(Category);
-        console.log(data);
         setMenu(data);
         setisDataLoading(false);  
     }
@@ -64,15 +65,16 @@ export default function MainScreen({navigation}){
     
     useEffect( () => {
         handleSelectedCategory('Coffee');
-      }, []);   
+      }, []);
      
     return(
         <> 
         <StatusBar barStyle="dark-content" backgroundColor="white"/>
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.mapstyle} >
+        <SafeAreaView style={styles.container}>
+            
+                <TouchableOpacity style={styles.mapstyle} onPress={()=>navigation.navigate(Map)}>
                   <Entypo name="location-pin" size={hp(3)} color="#74512D" style={styles.locationpin} />
-                  <Text style={styles.locationtext}>{locationtext}</Text>
+                  <Text style={styles.locationtext}>{location}</Text>
                 </TouchableOpacity>
                 <View style={styles.mapend}></View>
                 <View style={styles.search}>
@@ -80,17 +82,21 @@ export default function MainScreen({navigation}){
                     <TextInput style={styles.searchinput} placeholder='Search'
                             value={SearchText}
                             onChangeText={(text) => setSearchText(text)}></TextInput>
+                  
                 </View>
+                {SearchText !== '' && (
+                <Search searchQuery={SearchText} menu={Menu} navigation={navigation} />)}
                 <Text style={styles.categoryText}>Categories</Text>
                 <View style={styles.category}>
                     <MyTouchableOpacity category="Coffee" onPress={() => handleSelectedCategory("Coffee")} style={styles.categoryButton} />
                     <MyTouchableOpacity category="Dessert" onPress={() => handleSelectedCategory("Dessert")} style={styles.categoryButton} />
                 </View>
-                {!isDataLoading && <Products menu={Menu}/>}
+                {!isDataLoading && <Products menu={Menu} navigation={navigation}/>}
                 <View>
  
 </View>
-            </View>
+            
+            </SafeAreaView>
         </>
     );
 
@@ -136,7 +142,8 @@ const styles= StyleSheet.create({
         borderRadius: 20,
         flexDirection:"row",
         borderColor:"black",
-        marginVertical:hp(2),
+        marginTop:hp(2),
+        marginBottom:hp(1),
         borderWidth:1
     },
     searchinput:{
@@ -152,6 +159,7 @@ const styles= StyleSheet.create({
     color:"#74512D",
     fontSize: hp(3),
     marginBottom:hp(2),
+    marginTop: hp(1),
     marginHorizontal:wp(5)
     },
     category:{

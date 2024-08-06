@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, FlatList, Text, Image, ScrollView } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, Image, ScrollView } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { useProductStore } from '../Store/Store';
 
 export default function Products(props) {
+  const addToCart = useProductStore((state) => state.addToCart)
+  
   return (
     <ScrollView contentContainerStyle={styles.productsView}>
-      {/* Render products in pairs using a loop */}
       {props.menu.map((item, index) => {
-        const isEvenIndex = index % 2 === 0; 
 
         return (
-          <View key={item.id} style={[styles.productView, isEvenIndex && styles.productViewFirst]}>
+          <TouchableOpacity key={item.id} style={styles.productView} onPress={()=>props.navigation.navigate('ProductDetailScreen', {item: item}, {navigation:props.navigation})}>
             <Image source={{ uri: item.Image }} style={styles.ProductImage} />
             <Text style={styles.ProductName}>{item.Name}</Text>
             <View style={styles.productDetailView}>
               <Text style={styles.productprice}>{item.Price}</Text>
-              <AntDesign name="pluscircle" size={22} color="#74512D" style={styles.addlogo} />
+              <AntDesign name="pluscircle" size={22} color="#74512D" style={styles.addlogo} onPress={()=>addToCart(item)}/>
             </View>
-          </View>
+          </TouchableOpacity>
         );
       })}
     </ScrollView>
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: wp(90),
-    marginHorizontal: wp(5),
     justifyContent:"space-around"
   },
   productView: {
@@ -41,12 +40,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderRadius: 10,
-    marginBottom:hp(2)
-    
+    marginBottom:hp(2),
+    marginHorizontal:wp(2.5)
   },
-  productViewFirst: { 
-    marginRight: wp(10), 
-  },
+
   ProductImage: {
     height: hp(12),
     marginVertical: hp(0.5),

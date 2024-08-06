@@ -6,6 +6,7 @@ import LoginScreen from "./LoginScreen";
 import {my_auth} from './Firebase.js';
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SignUpScreen({navigation}){
 
@@ -56,7 +57,7 @@ export default function SignUpScreen({navigation}){
         <>
     <StatusBar barStyle="dark-content" backgroundColor="white" />
     
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
     {!accCreated && <>
       <Image source="../../assets/coffeelogin.png" style={styles.coffeimage}/>
       <Text style={styles.RegisterWelcomeText}>Hello, Register here to get started.</Text>
@@ -90,7 +91,7 @@ export default function SignUpScreen({navigation}){
       <TouchableOpacity style={styles.registerbutton} onPress={()=>navigation.navigate(LoginScreen)}><Text style={styles.registerbuttontext}>Login</Text></TouchableOpacity>
     </>
     }
-    </View>
+    </SafeAreaView>
    
     </>
     );

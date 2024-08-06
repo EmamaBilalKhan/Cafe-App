@@ -5,7 +5,8 @@ import { useState} from 'react';
 import SignUpScreen from './SignUpScreen';
 import {my_auth} from './Firebase.js';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-
+import ForgotPassword from './ForgotPassword.js';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoginScreen({navigation}) {
 
@@ -31,7 +32,7 @@ export default function LoginScreen({navigation}) {
     <>
     <StatusBar barStyle="dark-content" backgroundColor="white"/>
     
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Image source="../../assets/coffeelogin.png" style={styles.coffeimage}/>
       <Text style={styles.LoginWelcomeText}>Welcome! Login to your account</Text>
       <TextInput style={styles.inputfield} placeholder='email@gmail.com'
@@ -43,10 +44,10 @@ export default function LoginScreen({navigation}) {
         value={password}
         onChangeText={(text) => setPassword(text)}></TextInput>
       {failedlogin && <Text style={styles.error}>Error Logging in. Try Again.</Text>}
-      <TouchableOpacity style={styles.forgotpassword}>Forgot Password?</TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate(ForgotPassword)} ><Text style={styles.forgotpassword}>Forgot Password?</Text></TouchableOpacity>
       <TouchableOpacity style={styles.loginbutton} onPress={signInWithEmail}><Text style={styles.loginbuttontext}>Login</Text></TouchableOpacity>
       <Text style={styles.noaccount}>Don't have an account? <TouchableOpacity style={styles.register} onPress={()=>navigation.navigate(SignUpScreen)}><Text>Register Here.</Text></TouchableOpacity></Text>
-    </View>
+    </SafeAreaView>
    
     </>
   );

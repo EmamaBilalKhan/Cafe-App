@@ -1,15 +1,16 @@
 import {View, StyleSheet, Image} from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LoadingScreen(){
  
     return(
         <>
         <StatusBar barStyle="dark-content" backgroundColor="white"/>
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
         <Image source="../../assets/coffeelogin.png" style={styles.coffeimage}/>
-        </View>
+        </SafeAreaView>
         </>
     );
 
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     },
     coffeimage:{
         marginBottom:hp(2),
-        height: hp(20),
-        width: wp(38)
+        height: hp(25),
+        width: wp(48)
       }
 })
