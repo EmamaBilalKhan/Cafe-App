@@ -4,6 +4,7 @@ This React Native application, built using Expo, provides a platform for the caf
 
 The application makes use of libraries like react-native-responsive-screen for a responsive look, zustand for state management, vector icons, react-native-maps etc.
 
+* **Test the application on web with 'yarn web'**
 
 **Features**
   * **Registeration and Login**
@@ -11,8 +12,6 @@ The application makes use of libraries like react-native-responsive-screen for a
   * **Ordering, Cart and Payment**
   * **Profile Settings**
 
-
-* **Test on web with 'yarn web'**
 
 **User Interface**
 
