@@ -17,8 +17,7 @@ Check Out the Figma file for the UI design : [LINK](https://www.figma.com/design
 
 ![User Interface](assets/ui.png)
 
-
-
+Test on web with yarn.
 
 
 
