@@ -11,13 +11,15 @@ The application makes use of libraries like react-native-responsive-screen for a
   * **Ordering, Cart and Payment**
   * **Profile Settings**
 
+* **Test on web with 'yarn web'**
+
 **User Interface**
 
 Check Out the Figma file for the UI design : [LINK](https://www.figma.com/design/i5TYBPyNgLIfW07Z9ZEFnP/Cafe-App-UI?node-id=0-1&t=oYciDYRP4QH3oSzK-1)
 
 ![User Interface](assets/ui.png)
 
-Test on web with yarn.
+
 
 
 
