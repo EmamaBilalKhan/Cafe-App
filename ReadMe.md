@@ -11,6 +11,7 @@ The application makes use of libraries like react-native-responsive-screen for a
   * **Ordering, Cart and Payment**
   * **Profile Settings**
 
+
 * **Test on web with 'yarn web'**
 
 **User Interface**
