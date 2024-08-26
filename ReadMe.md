@@ -1,10 +1,8 @@
 **Overview**
 
-This React Native application, built using Expo, provides a platform for the cafe to manage their operations and customers to order food conveniently.
+This React Native application, built using Expo and firebase for database, provides a platform for the cafe to manage their operations and customers to order food conveniently.
 
 The application makes use of libraries like react-native-responsive-screen for a responsive look, zustand for state management, vector icons, react-native-maps etc.
-
-* **Test the application on web with 'yarn web'**
 
 **Features**
   * **Registeration and Login**
@@ -12,12 +10,9 @@ The application makes use of libraries like react-native-responsive-screen for a
   * **Ordering, Cart and Payment**
   * **Profile Settings**
 
-
 **User Interface**
 
 Check Out the Figma file for the UI design : [LINK](https://www.figma.com/design/i5TYBPyNgLIfW07Z9ZEFnP/Cafe-App-UI?node-id=0-1&t=oYciDYRP4QH3oSzK-1)
-
-![User Interface](assets/ui.png)
 
 
 
