@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Cafe-App",
-    "slug": "Cafe-App",
+    "name": "Cafe House",
+    "slug": "Cafe-House-Application",
+    "description":"This my practice project for react native that consists of an application for a cafe's customers. The application contains all the necessary features for its respective purpose.",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ios-icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash-2.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/android-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
