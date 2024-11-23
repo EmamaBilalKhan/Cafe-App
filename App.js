@@ -16,6 +16,9 @@ import Map from './src/screens/Map';
 import { SafeAreaProvider} from 'react-native-safe-area-context';
 import { useProductStore } from './src/Store/Store';
 import EmailVerificationScreen from './src/screens/EmailVerificationScreen';
+import EditProfile from './src/screens/EditProfile';
+import ContactScreen from './src/screens/ContactScreen';
+import SecurityScreen from './src/screens/SecurityScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -50,6 +53,7 @@ export default function App() {
   
   const getAuthInfo = async () => {
     const user = auth.currentUser;
+    console.log("User: ", user);
     if (user) {
       try{
       const idToken = await user.getIdToken();
@@ -104,6 +108,9 @@ export default function App() {
             <Stack.Screen name="ConfirmOrderScreen" component={ConfirmOrderScreen}/>
             <Stack.Screen name="OrderCompletedScreen" component={OrderCompletedScreen}/>
             <Stack.Screen name="Map" component={Map}/>
+            <Stack.Screen name="EditProfile" component={EditProfile}/>
+            <Stack.Screen name="ContactScreen" component={ContactScreen}/>
+            <Stack.Screen name="SecurityScreen" component={SecurityScreen}/>
           </>:
           <Stack.Screen name="RegisterationScreen" component={RegisterationScreen}/>
 

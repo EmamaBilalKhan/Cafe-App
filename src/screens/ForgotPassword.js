@@ -4,22 +4,52 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { useState} from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { useProductStore } from '../Store/Store';
 export default function ForgotPassword({navigation}){
     const [email, setEmail] = useState('');
+    const [Error, setError] = useState('');
 
+    const IP = useProductStore((state) => state.IP);
+    const handleForgotPassword = async() => {
+      setError("")
+      if(email===""){
+        setError("Please enter your email");
+        return;
+      }
+      try{
+        const response = await fetch(`http://${IP}:3000/Users/resetPassword`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+        if(response.ok){
+          setError("Email sent successfully");
+        }
+        else{
+          setError("Error sending email");
+        }
+      }
+      catch(error){
+        console.log("Error: ", error);
+        setError("Error sending email");
+      } 
+    }
     return(
       <>
         <StatusBar barStyle="dark-content" backgroundColor="white"/>
         <SafeAreaView style={styles.container}>
-         <Ionicons name="chevron-back-circle-sharp" size={hp(4)} color="#74512D" style={styles.backButton} onPress={()=>navigation.goBack()}/>
+        <Ionicons name="arrow-back-sharp" size={hp(4)} color="#74512D" style={styles.backButton} onPress={() => navigation.goBack()} />
+
         <View style={{alignItems:"center", justifyContent:"center", flex:1}}>
         <Text>Enter Your Email. We will send you a mail.</Text>
          <TextInput style={styles.inputfield} placeholder='email@gmail.com'
            value={email}
            onChangeText={(text) => setEmail(text)}
       ></TextInput>
-        <TouchableOpacity style={styles.button}><Text style={styles.buttontext}>Send</Text></TouchableOpacity>
+        <TouchableOpacity onPress={handleForgotPassword} style={styles.button}><Text style={styles.buttontext}>Send</Text></TouchableOpacity>
+        <>{Error && <Text style={styles.error}>{Error}</Text>}</>
         </View>
       </SafeAreaView>
       </>
@@ -30,6 +60,12 @@ container: {
     flex: 1,
     backgroundColor: 'white',
   },
+  error:{
+    color:"red",
+    fontSize:hp(2.2),
+    marginVertical:hp(2),
+    marginHorizontal:wp(3)
+},
   backButton:{
     
         marginLeft: wp(1),

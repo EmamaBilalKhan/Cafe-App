@@ -4,7 +4,7 @@ import { create } from 'zustand'
 export const useProductStore = create((set) => 
   {
   return{
-  IP:"10.135.16.191",
+  IP:"192.168.30.106",
   IsRegistered: null,
   isEmailVerified: null,
   setIsEmailVerified:(value)=>set({isEmailVerified:value}),

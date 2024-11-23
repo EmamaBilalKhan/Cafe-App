@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(25),
     backgroundColor: "#74512D",
     borderRadius: 5,
-    paddingVertical: hp(1)
+    justifyContent:"center",
+    alignItems:"center"
   },
   loginbuttontext:{
     textAlign: "center",

@@ -80,7 +80,7 @@ return(
         <StatusBar barStyle="dark-content" backgroundColor="white" />
         <Image source={require("../../assets/coffeelogin.png")} style={styles.coffeimage}/>
         <Text style={styles.VerifyText}>An email has been sent to your email address. Please click on the link in the email to verify your account. Once verified, you can continue to use our service.</Text>
-        {Error && <Text style={styles.error}>{Error}</Text>}
+        <>{Error && <Text style={styles.error}>{Error}</Text>}</>
         <TouchableOpacity style={styles.ResendButton} onPress={handleResend}>
             <Text style={styles.ResendText}>Resend Verification Email</Text>
         </TouchableOpacity>

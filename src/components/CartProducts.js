@@ -49,7 +49,7 @@ export default function Products(props) {
 const styles = StyleSheet.create({
  CartView:{
     flexDirection:"column",
-    marginHorizontal: wp(3),
+    marginHorizontal: wp(2),
     marginVertical: hp(2)
  },
  productView:{
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
  },
  productImage:{
     height: hp(12),
-    width: wp(34),
+    width: wp(30),
     marginRight:wp(1),
     borderRadius: 20
  },

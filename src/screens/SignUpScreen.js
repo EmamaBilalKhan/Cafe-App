@@ -54,6 +54,10 @@ export default function SignUpScreen({navigation}){
           setSignUpErr("Password and Confirm Password do not match");
         }
         else{
+          if(password.length<8){
+            setSignUpErr("Password should be atleast 8 characters long");
+            return;
+        }
           SignUpWithEmail();
         }
       } else {

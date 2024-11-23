@@ -13,7 +13,7 @@ export default function HomeStack() {
   const [activeTab,setActiveTab]= useState("Home");
 
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle:{minHeight: hp(7) } }}>
+    <Tab.Navigator screenOptions={{ headerShown: false, tabBarStyle:{minHeight: hp(6.5) } }}>
       <Tab.Screen
         name="Home"
         component={MainScreen}
