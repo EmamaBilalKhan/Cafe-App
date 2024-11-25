@@ -9,17 +9,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { auth } from './Firebase';
 export default function ConfirmOrderScreen({ navigation }) {
   const Total = useProductStore((state) => state.Total);
   const Location = useProductStore((state) => state.Location);
+  const cart = useProductStore((state) => state.cart);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cash');
+  const IP = useProductStore((state) => state.IP)
   const [cardNumber, setCardNumber] = useState('');
   const [cvc, setCVC] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cardHolderName, setCardHolderName] = useState('');
   const [Error, setError] = useState('');
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async() => {
     setError("");
     if (selectedPaymentMethod === 'visa') {
       if (!cardNumber || !cvc || !expiry || !cardHolderName) {
@@ -52,7 +54,37 @@ export default function ConfirmOrderScreen({ navigation }) {
         return;
       }
     }
-  
+    try{
+      const idToken = await auth.currentUser.getIdToken();
+      const response = await fetch(`http://${IP}:3000/Orders/PlaceOrder`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${idToken}`,
+        },
+        body: JSON.stringify({
+          total: Total,
+          location: Location,
+          paymentMethod: selectedPaymentMethod,
+          cardNumber: cardNumber,
+          cvc: cvc,
+          expiry: expiry,
+          cardHolderName: cardHolderName,
+          Order:cart
+        })
+      });
+      if(response.ok){
+        console.log("Order Placed Successfully");
+        useProductStore.setState({cart:[]});
+        useProductStore.setState({Total:0});
+      }
+      else{
+        console.log("Error in Placing Order");
+      }
+    }
+    catch(error){
+      console.log("Error in Placing Order");
+    }
     navigation.navigate("OrderCompletedScreen");
   };
   

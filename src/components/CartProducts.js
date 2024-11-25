@@ -4,7 +4,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { useProductStore } from '../Store/Store';
 
-export default function Products(props) {
+export default function Products() {
     const cart = useProductStore((state) => state.cart)
     const removeFromCart = useProductStore((state) => state.removeFromCart)
     const setTotal = useProductStore((state) => state.setTotal)

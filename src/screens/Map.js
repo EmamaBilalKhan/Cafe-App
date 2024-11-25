@@ -10,7 +10,7 @@ export default function Map({ navigation: { goBack } }){
         <>
           <StatusBar barStyle="dark-content" backgroundColor="white"/>
           <SafeAreaView>
-          <Ionicons name="chevron-back-circle-sharp" size={hp(5)} color="#74512D" style={styles.backButton} onPress={()=>goBack()}/>
+          <Ionicons name="arrow-back-sharp" size={hp(5)} color="#74512D" style={styles.backButton} onPress={()=>goBack()}/>
 
         </SafeAreaView>
         </>

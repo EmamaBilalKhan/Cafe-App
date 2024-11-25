@@ -9,7 +9,7 @@ import Products from '../components/Products';
 import Search from '../components/Search';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useProductStore} from '../Store/Store';
-
+import { auth } from './Firebase';
 export default function MainScreen({navigation}){
     const [SearchText,setSearchText]=useState("");
     const [SelectedCategory, setSelectedCategory]= useState("Coffee");
@@ -34,7 +34,7 @@ export default function MainScreen({navigation}){
 
       const handleSelectedCategory= async(Category)=>{
         setSelectedCategory(Category);
-        setErrorFetching(false); // Reset error state on new category selection
+        setErrorFetching(false); 
         setisDataLoading(true); 
         try{
         const data = await fetchData(Category);
@@ -52,8 +52,16 @@ export default function MainScreen({navigation}){
       }
 
       const fetchData = async (Category) =>{
+        const user = auth.currentUser;
+        const idToken = await user.getIdToken();
         try{
-        const response = await fetch(`http://${IP}:3000/${Category}_Products`);
+        const response = await fetch(`http://${IP}:3000/${Category}_Products`,{
+          method:"GET",
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${idToken}`
+          }
+        });
         const selectedMenu = await response.json();
         return selectedMenu;}
         catch(error){

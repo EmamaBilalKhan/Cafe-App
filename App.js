@@ -19,6 +19,8 @@ import EmailVerificationScreen from './src/screens/EmailVerificationScreen';
 import EditProfile from './src/screens/EditProfile';
 import ContactScreen from './src/screens/ContactScreen';
 import SecurityScreen from './src/screens/SecurityScreen';
+import AdminMainScreen from './src/screens/AdminMainScreen';
+import AdminOrderScreen from './src/screens/AdminOrderScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -116,7 +118,8 @@ export default function App() {
 
         ):
           <>
-          
+          <Stack.Screen name="AdminMainScreen" component={AdminMainScreen}/>
+          <Stack.Screen name="AdminOrderScreen" component={AdminOrderScreen}/>
           </>
         ) : (
           

@@ -23,7 +23,7 @@ export default function ProductDetailScreen({route}) {
      <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
       <Image source={{uri: item.Image}} style={styles.ProductImage}></Image>
-      <Ionicons name="chevron-back-circle-sharp" size={hp(5)} color="white" style={styles.backButton} onPress={handleBackPress}/>
+      <Ionicons name="arrow-back-sharp" size={hp(5)} color="white" style={styles.backButton} onPress={handleBackPress}/>
       </View>
         <Text style={styles.ProductName}>{item.Name}</Text>
         <View style={styles.AboutSection}>
