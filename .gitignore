@@ -35,4 +35,4 @@ yarn-error.*
 *.tsbuildinfo
 
 #Store
-./src/Store/Store.js
+src/Store/Store.js
