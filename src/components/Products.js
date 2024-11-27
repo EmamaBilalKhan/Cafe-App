@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     justifyContent:"space-around"
   },
   productView: {
-    width: wp(40), 
+    width: wp(38), 
     height: hp(20),
     flexDirection: 'column',
     justifyContent: 'center',
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   ProductImage: {
     height: hp(12),
     marginVertical: hp(0.5),
-    width: wp(34),
+    width: wp(32),
     borderRadius:10
   },
   productDetailView: {

@@ -9,7 +9,7 @@ export default function ForgotPassword({navigation}){
     const [email, setEmail] = useState('');
     const [Error, setError] = useState('');
 
-    const IP = useProductStore((state) => state.IP);
+    const URL = useProductStore((state) => state.URL);
     const handleForgotPassword = async() => {
       setError("")
       if(email===""){
@@ -17,7 +17,7 @@ export default function ForgotPassword({navigation}){
         return;
       }
       try{
-        const response = await fetch(`http://${IP}:3000/Users/resetPassword`, {
+        const response = await fetch(`${URL}/Users/resetPassword`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -89,11 +89,13 @@ container: {
     marginHorizontal: wp(25),
     backgroundColor: "#74512D",
     borderRadius: 5,
-    paddingVertical: hp(1)
+    alignItems:"center",
+    justifyContent:"center"
   },
   buttontext:{
     textAlign: "center",
     color: "white",
-    fontWeight:"bold"
+    fontWeight:"bold",
+    fontSize:hp(2)
   },
 })

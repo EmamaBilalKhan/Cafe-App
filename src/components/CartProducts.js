@@ -23,8 +23,8 @@ export default function Products() {
 
   return (
     <ScrollView>
-      {cart.map((item) => (
-  <View style={styles.CartView} key={item.id}>
+      {cart.map((item, index) => (
+  <View style={styles.CartView} key={index}>
     <View style={styles.productView}>
       <Image source={{ uri: item.Image }} style={styles.productImage} />
       <View style={styles.NameInstructionView}>
@@ -35,7 +35,7 @@ export default function Products() {
         <Text style={styles.price}>{item.Price}</Text>
       </View>
       <View style={{ position: 'absolute', Top: 5, right: 9 }}>
-      <AntDesign name="minuscircle" size={18} color="#74512D" onPress={()=>removeFromCart(item)} />
+      <AntDesign name="minuscircle" style={styles.minusIcon} size={hp(2.3)} color="#74512D" onPress={()=>removeFromCart(item)} />
       </View>
     </View>
   </View>
@@ -83,6 +83,8 @@ instructions:{
 price:{
     fontWeight:"bold",
 },
-
+minusIcon:{
+  marginTop:hp(1)
+}
 
 });

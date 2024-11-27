@@ -17,7 +17,8 @@ export default function MainScreen({navigation}){
     const [ErrorFetching, setErrorFetching] = useState(false);
     const [isDataLoading, setisDataLoading] = useState(true)
     const location = useProductStore((state) => state.Location);
-    const IP = useProductStore(state=>state.IP);
+    const setLocation = useProductStore((state) => state.setLocation);
+    const URL = useProductStore(state=>state.URL);
     const getCategoryStyle = (category) => {
         const isSelected = category === SelectedCategory;
         return {
@@ -55,7 +56,7 @@ export default function MainScreen({navigation}){
         const user = auth.currentUser;
         const idToken = await user.getIdToken();
         try{
-        const response = await fetch(`http://${IP}:3000/${Category}_Products`,{
+        const response = await fetch(`${URL}/${Category}_Products`,{
           method:"GET",
           headers: {
             'Content-Type': 'application/json',
@@ -70,7 +71,33 @@ export default function MainScreen({navigation}){
         }
       }
 
-
+    const fetchUserDetails= async()=>{
+        const user = auth.currentUser;
+        if (user) {
+          try{
+          const idToken = await user.getIdToken();
+      
+          const response = await fetch(`${URL}/Users/UserInformation`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${idToken}`,
+            },
+          });
+      
+          if (response.ok) {
+          const data = await response.json();
+          console.log("Location Fetched")
+          setLocation(data.address);
+          }
+          else{
+            console.log("Location error on main screen: ", response.status)
+          }}
+          catch(error){
+            console.log("Location error on main screen: ", error)
+          }
+        }
+    }
 
     const MyTouchableOpacity = memo(({ category,onPress}) => (
         <TouchableOpacity onPress={onPress} style={[styles.categoryButton, getCategoryStyle(category)]}>
@@ -80,6 +107,7 @@ export default function MainScreen({navigation}){
     
     useEffect( () => {
         handleSelectedCategory('Coffee');
+        fetchUserDetails();
       }, []);
      
     return(
@@ -87,7 +115,7 @@ export default function MainScreen({navigation}){
         <StatusBar barStyle="dark-content" backgroundColor="white"/>
         <SafeAreaView style={styles.container}>
             
-                <TouchableOpacity style={styles.mapstyle} onPress={()=>navigation.navigate(Map)}>
+                <TouchableOpacity style={styles.mapstyle} onPress={()=>navigation.navigate("EditProfile")}>
                   <Entypo name="location-pin" size={hp(3)} color="#74512D" style={styles.locationpin} />
                   <Text style={styles.locationtext}>{location}</Text>
                 </TouchableOpacity>
@@ -157,7 +185,7 @@ const styles= StyleSheet.create({
         width: wp(90),
         marginHorizontal:wp(5),
         paddingLeft: wp(2),
-        borderRadius: 20,
+        borderRadius: 25,
         flexDirection:"row",
         borderColor:"black",
         marginTop:hp(2),
@@ -176,7 +204,6 @@ const styles= StyleSheet.create({
     fontWeight:"bold",
     color:"#74512D",
     fontSize: hp(3),
-    marginBottom:hp(2),
     marginTop: hp(1),
     marginHorizontal:wp(5)
     },
@@ -190,7 +217,7 @@ const styles= StyleSheet.create({
     categoryButton:{
         width:wp(40),
             height: hp(5),
-            borderRadius: 20,
+            borderRadius: 25,
             borderColor:"#74512D",
             borderWidth:2,
             alignItems:"center",

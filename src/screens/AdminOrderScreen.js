@@ -10,7 +10,7 @@ import { auth } from './Firebase';
 import { useState } from 'react';
 export default function AdminOrderScreen({ route }) {
     const navigation = useNavigation();
-    const IP = useProductStore((state)=>state.IP)
+    const URL = useProductStore((state)=>state.URL)
     const Order = route.params.Order;
     const Orders = Order.order;
     const [Error,setError]=useState("");
@@ -30,7 +30,7 @@ export default function AdminOrderScreen({ route }) {
         setError("")
         try{
             const idToken = await auth.currentUser.getIdToken();
-            const response = await fetch(`http://${IP}:3000/Orders/DeleteOrder`, {
+            const response = await fetch(`${URL}/Orders/DeleteOrder`, {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',

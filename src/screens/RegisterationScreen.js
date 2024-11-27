@@ -14,7 +14,7 @@ export default function RegisterationScreen() {
     const [Contact, setContact] = useState("");
     const [Address, setAddress] = useState("");
     const [Error, setError] = useState(null);
-    const IP = useProductStore(state=>state.IP);
+    const URL = useProductStore(state=>state.URL);
     const handleRegistration = async () => {
         const IsRegistered = validateAndSubmit();
         if(IsRegistered!==null){
@@ -34,7 +34,7 @@ export default function RegisterationScreen() {
         if (Name && Contact && Address) {
             try{
                 const idToken = await auth.currentUser.getIdToken();
-                const response = await fetch(`http://${IP}:3000/Users/RegisterUser`, {
+                const response = await fetch(`${URL}/Users/RegisterUser`, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',

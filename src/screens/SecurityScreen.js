@@ -16,7 +16,7 @@ export default function SecurityScreen() {
     const [NewPassword, setNewPassword] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
     const [Error, setError] = useState(null);
-    const IP = useProductStore(state=>state.IP);
+    const URL = useProductStore(state=>state.URL);
 
     const validateAndSubmit=async()=>{
         if(CurrentPassword && NewPassword && ConfirmPassword){
@@ -38,7 +38,7 @@ export default function SecurityScreen() {
                          try{
                             const idToken = await auth.currentUser.getIdToken();
 
-                            const response = await fetch(`http://${IP}:3000/Users/changePassword`, {
+                            const response = await fetch(`${URL}/Users/changePassword`, {
                                 method: 'POST',
                                 headers: {
                                   'Content-Type': 'application/json',
@@ -191,7 +191,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     input: {
-        height: hp(3),
         fontSize: hp(2.2),
         color: 'black',
         backgroundColor: "#F8F4E1"

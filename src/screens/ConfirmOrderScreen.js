@@ -15,7 +15,7 @@ export default function ConfirmOrderScreen({ navigation }) {
   const Location = useProductStore((state) => state.Location);
   const cart = useProductStore((state) => state.cart);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cash');
-  const IP = useProductStore((state) => state.IP)
+  const URL = useProductStore((state) => state.URL)
   const [cardNumber, setCardNumber] = useState('');
   const [cvc, setCVC] = useState('');
   const [expiry, setExpiry] = useState('');
@@ -56,7 +56,7 @@ export default function ConfirmOrderScreen({ navigation }) {
     }
     try{
       const idToken = await auth.currentUser.getIdToken();
-      const response = await fetch(`http://${IP}:3000/Orders/PlaceOrder`, {
+      const response = await fetch(`${URL}/Orders/PlaceOrder`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

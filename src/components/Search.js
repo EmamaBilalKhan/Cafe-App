@@ -35,6 +35,7 @@ const styles= StyleSheet.create({
         paddingTop: wp(1),
         borderColor:"black",
         borderWidth:1,
-        paddingLeft: wp(2)
+        paddingLeft: wp(2),
+        borderRadius:15
     }
 })

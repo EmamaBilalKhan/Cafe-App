@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, TextInput, TouchableOpacity,View } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import {auth} from './Firebase.js';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 
 export default function LoginScreen({navigation}) {
+    
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [failedlogin, setFailedLogin] = useState(false);
@@ -57,7 +58,10 @@ export default function LoginScreen({navigation}) {
       </>
       <TouchableOpacity onPress={()=>navigation.navigate("ForgotPassword")} ><Text style={styles.forgotpassword}>Forgot Password?</Text></TouchableOpacity>
       <TouchableOpacity style={styles.loginbutton} onPress={HandleSignIn}><Text style={styles.loginbuttontext}>Login</Text></TouchableOpacity>
-      <Text style={styles.noaccount}>Don't have an account? <TouchableOpacity style={styles.register} onPress={()=>navigation.navigate("SignUpScreen")}><Text>Register Here.</Text></TouchableOpacity></Text>
+      <View style={styles.haveaccountView}>
+      <Text style={styles.haveaccount}>Don't have an account? </Text>
+      <TouchableOpacity onPress={()=>navigation.navigate("SignUpScreen")}><Text style={styles.RegisterHereText}>Register Here.</Text></TouchableOpacity>
+      </View>
     </SafeAreaView>
    
     </>
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
   },
   inputfield:{
     width: wp(90),
-    height: hp(5),
+    height: hp(6),
     marginHorizontal: wp(5),
     marginVertical: hp(2),
     backgroundColor: "#F8F4E1",
@@ -106,17 +110,22 @@ const styles = StyleSheet.create({
   loginbuttontext:{
     textAlign: "center",
     color: "white",
-    fontWeight:"bold"
+    fontWeight:"bold",
+    fontSize:hp(2)
   },
-  noaccount:{
+  haveaccountView:{
+    flexDirection:"row"
+  },
+  haveaccount:{
     fontSize: hp(2),
     color: "#74512D",
-    marginVertical: hp(2),
-    fontWeight:"400"
+    fontWeight:"400",
   },
-  register:{
+  RegisterHereText:{
     color: "black",
-    fontWeight:"500"
+    fontWeight:"bold",
+    fontSize:hp(1.8),
+    marginTop:hp(0.03)
   },
   forgotpassword:{
     color:"#74512D",

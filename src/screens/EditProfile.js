@@ -13,7 +13,8 @@ export default function EditProfile() {
     const [Contact, setContact] = useState("");
     const [Address, setAddress] = useState("");
     const [Error, setError] = useState(null);
-    const IP = useProductStore(state=>state.IP);
+    const URL = useProductStore(state=>state.URL);
+    const setLocation = useProductStore(state=>state.setLocation)
     useEffect(()=>{
         const fetchUserDetails= async()=>{
             const user = auth.currentUser;
@@ -21,7 +22,7 @@ export default function EditProfile() {
               try{
               const idToken = await user.getIdToken();
           
-              const response = await fetch(`http://${IP}:3000/Users/UserInformation`, {
+              const response = await fetch(`${URL}/Users/UserInformation`, {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ export default function EditProfile() {
               try{
               const idToken = await user.getIdToken();
           
-              const response = await fetch(`http://${IP}:3000/Users/EditUserInformation`, {
+              const response = await fetch(`${URL}/Users/EditUserInformation`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -72,6 +73,7 @@ export default function EditProfile() {
           
               if (response.ok) {
                 console.log("User details updated successfully");
+                setLocation(Address);
             }
               else{
                 console.log("error: ", response.status)
@@ -181,8 +183,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     input: {
-        height: hp(3),
-        fontSize: hp(2.2),
+        fontSize: hp(2.3),
         color: 'black',
         backgroundColor: "#F8F4E1"
     },

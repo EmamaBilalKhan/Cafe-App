@@ -1,31 +1,36 @@
-import {View, StyleSheet, Image} from 'react-native';
-import { StatusBar } from "expo-status-bar";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+//import LottieView from 'lottie-react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-export default function LoadingScreen(){
- 
-    return(
-        <>
-        <StatusBar barStyle="dark-content" backgroundColor="white"/>
-        <SafeAreaView style={styles.container}>
-        <Image source={require("../../assets/coffeelogin.png")} style={styles.coffeimage}/>
-        </SafeAreaView>
-        </>
-    );
-
-}
+export default function LoadingScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.LoadingText}>Loading...</Text>
+      {/*<LottieView
+        source={require('../../assets/Loading-Lottie.json')} 
+        autoPlay
+        loop
+        style={styles.animation}
+      />*/}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container:{
-      flex: 1,
-      backgroundColor: 'white',
-      alignItems: 'center',
-      justifyContent:"center"
-    },
-    coffeimage:{
-        marginBottom:hp(2),
-        height: hp(25),
-        width: wp(48)
-      }
-})
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  animation: {
+    width: wp(50),
+    height: hp(25),
+  },
+  LoadingText:{
+    color:"#74512D",
+    alignSelf:"center",
+    fontWeight:"bold"
+  }
+});

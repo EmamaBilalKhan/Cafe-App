@@ -1,4 +1,4 @@
-import {StyleSheet, Text,Image, TouchableOpacity,TextInput, ScrollView} from "react-native";
+import {StyleSheet, Text,Image, TouchableOpacity,TextInput, ScrollView, View} from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useState } from "react";
@@ -94,7 +94,10 @@ export default function SignUpScreen({navigation}){
       </>
       }
       <TouchableOpacity style={styles.registerbutton} onPress={HandleSignUp}><Text style={styles.registerbuttontext}>Register</Text></TouchableOpacity>
-      <Text style={styles.haveaccount}>Already have an account? <TouchableOpacity style={styles.Login} onPress={()=>navigation.navigate(LoginScreen)}><Text>Login Here.</Text></TouchableOpacity></Text>
+      <View style={styles.haveaccountView}>
+      <Text style={styles.haveaccount}>Already have an account? </Text>
+      <TouchableOpacity onPress={()=>navigation.navigate(LoginScreen)}><Text style={styles.LoginHereText}>Login Here.</Text></TouchableOpacity>
+      </View>
     </>
     }
     {accCreated && 
@@ -137,11 +140,11 @@ const styles = StyleSheet.create({
         color:"#74512D",
         fontSize: hp(3),
         marginVertical:hp(2),
-        marginHorizontal:wp(5)
+        marginHorizontal:wp(5),
       },
       inputfield:{
         width: wp(90),
-        height: hp(5),
+        height: hp(6),
         marginHorizontal: wp(5),
         marginVertical: hp(2),
         backgroundColor: "#F8F4E1",
@@ -156,7 +159,8 @@ const styles = StyleSheet.create({
         marginHorizontal: wp(25),
         backgroundColor: "#74512D",
         borderRadius: 5,
-        paddingVertical: hp(1)
+       alignItems:"center",
+       justifyContent:"center"
       },
       LoginButton:{
         backgroundColor:"#574118"
@@ -164,17 +168,22 @@ const styles = StyleSheet.create({
       registerbuttontext:{
         textAlign: "center",
         color: "white",
-        fontWeight:"bold"
+        fontWeight:"bold",
+        fontSize:hp(2)
+      },
+      haveaccountView:{
+        flexDirection:"row"
       },
       haveaccount:{
         fontSize: hp(2),
         color: "#74512D",
         fontWeight:"400",
-        marginBottom:hp(3)
       },
-      Login:{
+      LoginHereText:{
         color: "black",
-        fontWeight:"500"
+        fontWeight:"bold",
+        fontSize:hp(1.8),
+        marginTop:hp(0.03)
       },
       errors:{
         height: hp(3),

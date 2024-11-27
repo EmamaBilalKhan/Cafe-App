@@ -11,7 +11,7 @@ export default function AdminMainScreen() {
   const [orders, setOrders] = useState([]);
   const [Loading, setLoading] = useState(true);
   const [Error, setError] = useState("");
-  const IP = useProductStore((state) => state.IP);
+  const URL = useProductStore((state) => state.URL);
   const navigation = useNavigation();
 
   const getTimeFromTimestamp=(timestamp)=> {
@@ -48,7 +48,7 @@ export default function AdminMainScreen() {
         const user = auth.currentUser;
         if (!user) throw new Error("User not authenticated");
         const idToken = await user.getIdToken();
-        const response = await fetch(`http://${IP}:3000/Orders`, {
+        const response = await fetch(`${URL}/Orders`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
