@@ -34,7 +34,7 @@ Backend github repository: [LINK](https://github.com/EmamaBilalKhan/Cafe-Backend
 Backend hosted at vercel : [LINK](https://cafe-backend-livid.vercel.app/)
 
 # Installation
-Download **Apk** here: [LINK](https://drive.google.com/file/d/1f_gfQ55vF3CfB5MtgR9AWWT2DG-gH7BQ/view?usp=drive_link)
+Download **APK** here: [LINK](https://drive.google.com/file/d/1f_gfQ55vF3CfB5MtgR9AWWT2DG-gH7BQ/view?usp=drive_link)
 
 
 To use on your **system**:
@@ -67,7 +67,7 @@ Press "w" for web, "a" to run on android emulator
 **email:** sp21-bse-067@cuilahore.edu.pk  
 **password:** emamabilal  
 
-**User Interface**
+# User Interface
 
 Check Out the Figma file for the UI design : [LINK](https://www.figma.com/design/i5TYBPyNgLIfW07Z9ZEFnP/Cafe-App-UI?node-id=0-1&t=oYciDYRP4QH3oSzK-1)
 
