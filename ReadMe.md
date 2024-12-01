@@ -2,7 +2,7 @@
 
 Cafe-App is a Cafe Managment System that was developed using React Native (Expo), Express and Firebase. 
 
-The application makes use of state management library zustand to efficiently manage app operations, firebase admin to provide secure access levels and react-native-responsive-screen to create a dynamic interface of different screen sizes.
+The application makes use of state management library zustand to efficiently manage app operations, firebase admin and client to provide secure access levels and react-native-responsive-screen to create a dynamic interface of different screen sizes.
 
 The System has separate Admin and customer panels that allow the user to perform their tasks according to authorized access levels.
 
@@ -59,13 +59,13 @@ Press "w" for web, "a" to run on android emulator
 
 **Already existing accounts:**
 
-**Admin :** 
-**email :** admincafe114@gmail.com
-**password:** 12345678
+**Admin :**  
+**email :** admincafe114@gmail.com  
+**password:** 12345678  
 
-**Customer:**
-**email:** sp21-bse-067@cuilahore.edu.pk
-**password:** emamabilal
+**Customer:**  
+**email:** sp21-bse-067@cuilahore.edu.pk  
+**password:** emamabilal  
 
 **User Interface**
 
