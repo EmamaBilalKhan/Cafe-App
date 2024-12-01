@@ -15,12 +15,12 @@ export default function SignUpScreen({navigation}){
     const [accCreated, setaccCreated] = useState(false);
     const [regFailed, setregFailed] = useState(false);
     const [SignUpErr, setSignUpErr] = useState("");
-    const IP = useProductStore((state) => state.IP);
+    const URL = useProductStore((state) => state.URL);
 
     async function SignUpWithEmail() {
       console.log("cred: ", email,password);
         try {
-            const response = await fetch(`http://${IP}:3000/Users/SignUp`, {
+            const response = await fetch(`${URL}/Users/SignUp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

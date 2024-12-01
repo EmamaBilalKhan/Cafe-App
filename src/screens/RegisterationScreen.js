@@ -180,7 +180,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     input: {
-        height: hp(3),
         fontSize: hp(2.2),
         color: 'black',
         backgroundColor: "#F8F4E1"

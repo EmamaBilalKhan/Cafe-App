@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Cafe House",
-    "slug": "Cafe-House-Application",
-    "description":"This my practice project for react native that consists of an application for a cafe's customers. The application contains all the necessary features for its respective purpose.",
+    "name": "Cafe-App",
+    "slug": "Cafe-App",
+    "description": "This my practice project for react native that consists of an application for a cafe's customers and admin. The application contains all the necessary features for its respective purpose.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/ios-icon.png",
@@ -19,10 +19,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/android-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.emamabilal.CafeApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "26ab6194-39b7-447f-9976-9c37d1db02f2"
+      }
     }
   }
 }

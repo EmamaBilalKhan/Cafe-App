@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
+import { StyleSheet, View, TextInput, TouchableOpacity, Text, Image, ScrollView } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
@@ -17,10 +17,10 @@ export default function ProductDetailScreen({route}) {
       navigation.popToTop()
     };
     return (
-      <>
-      <StatusBar barStyle="dark-content" backgroundColor="white"/>
-
+      
      <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.ScrollViewContainer}>
+     <StatusBar barStyle="dark-content" backgroundColor="white"/>
       <View style={styles.imageContainer}>
       <Image source={{uri: item.Image}} style={styles.ProductImage}></Image>
       <Ionicons name="arrow-back-sharp" size={hp(5)} color="white" style={styles.backButton} onPress={handleBackPress}/>
@@ -43,8 +43,8 @@ export default function ProductDetailScreen({route}) {
         <TouchableOpacity onPress={()=>{const itemWithInstructions = { ...item, Instructions: itemInstructions }
         addToCart(itemWithInstructions)
         }} style={styles.Cartbutton}><Text style={styles.Cartbuttontext}>Add to Cart     |     {item.Price}</Text></TouchableOpacity>
-      
-     </SafeAreaView></>
+      </ScrollView>
+     </SafeAreaView>
     );
   }
 
@@ -52,8 +52,10 @@ const styles = StyleSheet.create({
 container:{
         flex:1,
         backgroundColor: "white",
-        alignItems:"center",
     },
+  ScrollViewContainer:{
+    alignItems:"center",
+  },
     imageContainer:{
         position:"relative"  
     },
