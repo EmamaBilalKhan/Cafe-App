@@ -10,7 +10,6 @@ import SignUpScreen from './src/screens/SignUpScreen';
 import ForgotPassword from './src/screens/ForgotPassword';
 import EmailVerificationScreen from './src/screens/EmailVerificationScreen';
 import RegisterationScreen from './src/screens/RegisterationScreen';
-
 import HomeStack from './src/TabNavigation/HomeStack';
 import Products from './src/components/Products';
 import ProductDetailScreen from './src/screens/ProductDetailScreen';
@@ -19,12 +18,10 @@ import OrderCompletedScreen from './src/screens/OrderCompletedScreen';
 import EditProfile from './src/screens/EditProfile';
 import ContactScreen from './src/screens/ContactScreen';
 import SecurityScreen from './src/screens/SecurityScreen';
-
 import AdminMainScreen from './src/screens/AdminMainScreen';
 import AdminOrderScreen from './src/screens/AdminOrderScreen';
 
 const Stack = createNativeStackNavigator();
-
 export default function App() {
   const URL = useProductStore((state) => state.URL);
   const [isSignedIn, setIsSignedIn] = useState(false);
